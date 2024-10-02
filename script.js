@@ -28,7 +28,6 @@ const displayPhotos = () => {
   // Setting totalImages
   imagesLoaded = 0;
   totalImages = fetchedPhotos.length;
-  console.log("total images = ", totalImages);
   fetchedPhotos.forEach((photo) => {
     // Create <a> element
     const linkElement = document.createElement("a");
@@ -44,10 +43,9 @@ const displayPhotos = () => {
     img.addEventListener("load", () => {
       loader.hidden = true;
       imagesLoaded++;
-      console.log("imagesLoaded = ", imagesLoaded);
       if (imagesLoaded === totalImages) {
         ready = true;
-        console.log("Ready = ", ready);
+        loader.hidden = true;
         loader.hidden = true;
       }
     });
@@ -64,6 +62,7 @@ window.addEventListener("scroll", () => {
     ready
   ) {
     ready = false;
+    loader.hidden = false;
     getPhotos();
   }
 });
